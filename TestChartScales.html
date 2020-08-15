@@ -1,0 +1,58 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+
+<div id="chartName">
+</div>
+
+
+<script src="scripts/Chart.js" />
+<script>
+
+var obj= { coverage: [ { BuilNumber : 1; LineCoverage : 12 },
+						{ BuilNumber : 2; LineCoverage : 82 },
+						{ BuilNumber : 3; LineCoverage : 2 },
+						{ BuilNumber : 4; LineCoverage : 50 } ],	 
+	};
+			
+
+var ctx = document.getElementById("chartName").getContext("2d");
+var data = { labels : [],
+			 datasets : []
+			};
+var lineCoverage = {
+            label: "Line Coverage",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "rgba(220,220,220,1)",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+			data : []
+			};
+
+for( var i=obj.coverage.length-1;i>=0; i--) {
+	data.labels.push(obj.coverage[i].BuildNumber);
+	lineCoverage.data.push(obj.coverage[i].LineCoverage);
+}
+
+data.datasets.push(lineCoverage);
+data.datasets.push(branchCoverage);
+
+
+var myLineChart = new Chart(ctx).Line(data, {
+    bezierCurve: false, animation: true, animationSteps:20
+});
+
+
+
+</script>
+
+</body>
+</html> 

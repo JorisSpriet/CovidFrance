@@ -1,0 +1,4 @@
+https://github.com/florianzemma/CoronavirusAPI-France
+
+
+https://raw.githubusercontent.com/opencovid19-fr/data/master/dist/chiffres-cles.json

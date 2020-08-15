@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TEST JSON OBJECT FROM TEXT</title>
+<meta name="description" content="THE TEST">
+<meta name="author" content="JS">
+<link rel="stylesheet" href="css/styles.css?v=1.0">
+<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script src="scripts/Chart.js"></script>
+<script src="DrawCoverage.js"></script>
+
+</head>
+<body>
+
+<p id="demo"></p>
+
+<canvas id="coverageChart" width="100%" height="400"></canvas>
+
+
+<div id="brighteyecoverage">
+<script src="scripts/Chart.js"></script>
+<script src="DrawCoverage.js"></script>
+<script>
+text = '{ "coverage" : '+
+'[{"BranchCoverage":12.4000000000000000000,"BuildNumber":"15.4.0.95","BuildTime":"2016-03-25T15:02:03.6449739","LineCoverage":11.4000000000000000000,"NumberOfAssemblies":16,"NumberOfClasses":3740,"NumberOfCoverableLines":171937,"NumberOfCoveredLines":21398,"NumberOfFiles":3868,"NumberOfUncoveredLines":150539,"TotalNumberOfLines":431821}]'+
+}';
+DrawCoverage(text);
+</script>
+</div>
+</body>
+</html>

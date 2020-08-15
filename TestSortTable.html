@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+
+<script src="http://listjs.com/no-cdn/list.js"></script>
+<script src="http://listjs.com/no-cdn/list.fuzzysearch.js"></script>
+<link rel="stylesheet" href="css/liststyles.css">
+<title>Demo Sort Table</title>
+</head>
+<body>
+
+<div id="users">  
+    <table style="width: 1200px">
+        <!-- IMPORTANT, class="list" have to be at tbody -->
+        <thead>
+            <tr>
+                <th>
+                    <button class="sort asc" data-sort="name" style="width: 100%">Sort by name</button></th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>
+                    <input class="search" placeholder="Search" style="width: 100%" /></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="userslist" class="list">
+            <tr>
+                <td class="name">Jonny Stromberg</td>
+                <td class="born">1986</td>
+            </tr>
+            <tr>
+                <td class="name">Jonas Arnklint</td>
+                <td class="born">1985</td>
+            </tr>
+            <tr>
+                <td class="name">Martina Elm</td>
+                <td class="born">1986</td>
+            </tr>
+            <tr>
+                <td class="name">Gustaf Lindqvist</td>
+                <td class="born">1983</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<script>
+var options = {
+  valueNames: [ 'name', 'born' ]
+};
+
+
+var tbdy = document.getElementById('userslist');
+var row = tbdy.insertRow(-1);
+var c0 = row.insertCell(-1);
+c0.className = 'name';
+c0.innerHTML = 'Joris Spriet';
+var c1 = row.insertCell(-1);
+c1.className = 'born';
+c1.innerHTML = 1984;
+
+var userList = new List('users', options);
+</script>
+</body>
+</html>

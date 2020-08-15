@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+
+<title>Test Sort Table</title>
+</head>
+<body>
+
+
+<link rel="stylesheet" href="css/liststyles.css">
+
+    <div id="coveragesummary">
+        <table style="width: 1200px">
+            <thead>
+                <tr>
+                    <th style="width: 800px"><button class="sort" data-sort="fullclassname" style="width:100%">Class</button></th>
+                    <th>Coverable lines</th>
+                    <th>Covered lines</th>
+                    <th><button class="sort" data-sort="coverage">Coverage</button></th>
+                    <th>Evaluation</th>
+                </tr>
+                <tr>
+                    <th><input class="search" placeholder="Search" style="width:100%" /></th>
+                    <th><input style="width:100%" disabled="disabled" /></th>
+                    <th><input style="width:100%" disabled="disabled" /></th>
+                    <th><input style="width:100%" disabled="disabled" /></th>
+                    <th><input style="width:100%" disabled="disabled" /></th>
+                </tr>
+            </thead>
+            <tbody id="coveragesummarytable" class="list" />
+        </table>
+    </div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="scripts/list.js"></script>
+<script src="scripts/list.fuzzysearch.min.js"></script>
+<script>
+    var options = {
+        valueNames: ['fullclassname', 'coverablelines', 'coveredlines', 'coverage', 'coverageresult']        
+    };
+
+    var values = [{
+        fullclassname: 'MEScontrol.Model.Common.SomeClass',
+        coverablelines: 123,
+        coveredlines: 456,
+        coverage: '10%',
+        coverageresult: 'Status quo'
+    },
+    {
+        fullclassname: 'MEScontrol.Model.Common.SomeOtherClass',
+        coverablelines: 123,
+        coveredlines: 456,
+        coverage: '30%',
+        coverageresult: 'Increased'
+    },
+    {
+        fullclassname: 'MEScontrol.Model.Common.AndSomeOtherClass',
+        coverablelines: 123,
+        coveredlines: 456,
+        coverage: '5%',
+        coverageresult: 'Decreased'
+    }];
+
+
+    tableCreate(values);
+    
+    var coverageList = new List('coveragesummary', options);
+    
+    function tableCreate(values) {
+        var tbdy = document.getElementById('coveragesummarytable');
+
+        //rows       
+        values.forEach(function (value) {
+            var row = tbdy.insertRow(0);
+            var columnnames = ['fullclassname', 'coverablelines', 'coveredlines', 'coverage', 'coverageresult'];            
+            for (i = 0; i < columnnames.length; i++) {
+                var c = row.insertCell(-1);
+                c.className = columnnames[i];
+                c.innerHTML = value[columnnames[i]];
+            }
+            
+            switch (value['coverageresult']) {
+                case 'Status quo':
+                    row.cells[4].style['background-color'] = 'DarkSeaGreen';
+                    break;
+                case 'Increased':
+                    row.style['background-color'] = 'Green';
+                    break;
+                case 'Decreased':
+                    row.style['background-color'] = 'IndianRed';
+                    break;
+            }
+            
+        });
+    }
+
+</script>
+  
+</body>
+</html>
